@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SellersX - Robux Shop</title>
+  <link rel="icon" href="logo.png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    img.logo {
+      width: 120px;
+      margin-top: 20px;
+    }
+    h1 {
+      margin: 10px 0 0;
+      font-size: 2.5em;
+    }
+    p.tagline {
+      margin: 5px 0 30px;
+      font-size: 1.2em;
+      color: #ccc;
+    }
+    .button {
+      display: block;
+      width: 90%;
+      max-width: 400px;
+      margin: 15px auto;
+      padding: 15px;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #fff;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .contact-box {
+      margin-top: 25px;
+    }
+    .note {
+      font-size: 0.9em;
+      margin-top: 20px;
+      color: #ffb;
+    }
+    select {
+      padding: 10px;
+      margin-top: 25px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="SellersX Logo" class="logo" />
+  <h1>SellersX</h1>
+  <p class="tagline">Fast & Legit Robux Seller</p>
+
+  <button class="button" onclick="buyPackage('1000 Robux – 25$')">💰 Buy 1000 Robux – 25$</button>
+  <button class="button" onclick="buyPackage('2000 Robux – 45$')">💰 Buy 2000 Robux – 45$</button>
+  <button class="button" onclick="buyPackage('4000 Robux – 80$')">💰 Buy 4000 Robux – 80$</button>
+
+  <div class="contact-box" id="contactBox" style="display:none;">
+    <p>📲 Which seller do you want to contact?</p>
+    <a class="button" href="https://wa.me/201098221180" target="_blank">Contact Seller 1 (Jason)</a>
+    <a class="button" href="https://wa.me/96598724867" target="_blank">Contact Seller 2 (Mohamed)</a>
+    <p class="note">⚠ If they didn’t answer, please wait. They might be studying, outside, or busy. Be patient 🙏</p>
+  </div>
+
+  <select onchange="changeLang(this.value)">
+    <option value="">🌐 Translate</option>
+    <option value="ar">Arabic</option>
+    <option value="fr">French</option>
+    <option value="es">Spanish</option>
+    <option value="de">German</option>
+    <option value="id">Indonesian</option>
+  </select>
+
+  <p class="note">📢 When this link gets more popular then updates will come up...</p>
+
+  <audio id="bgm" autoplay loop>
+    <source src="theme1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const songs = ["theme1.mp3", "theme2.mp3", "theme3.mp3"];
+    let current = 0;
+    const player = document.getElementById("bgm");
+
+    player.onended = () => {
+      current = (current + 1) % songs.length;
+      player.src = songs[current];
+      player.play();
+    };
+
+    function buyPackage(text) {
+      navigator.clipboard.writeText("أنا عايز أشتري " + text);
+      document.getElementById("contactBox").style.display = "block";
+      alert("✅ Copied: أنا عايز أشتري " + text);
+    }
+
+    function changeLang(lang) {
+      if (!lang) return;
+      const url = `https://translate.google.com/translate?sl=auto&tl=${lang}&u=${location.href}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
